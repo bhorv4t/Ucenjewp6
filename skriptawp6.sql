@@ -1,4 +1,5 @@
 ﻿-- Ovo je SQL skripta
+-- prebacujem se na master bazu
 
 use master;
 go 
