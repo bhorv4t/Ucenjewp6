@@ -1,6 +1,20 @@
 --create database zoo; 
 --use zoo;
 
+use master;
+go 
+
+drop database if exists zoo;
+go
+
+create database zoo;
+go
+
+use zoo;
+go
+
+
+
 
 create table djelatnik(
 sifra int,
