@@ -82,6 +82,19 @@ CREATE TABLE Korisnici (
     email VARCHAR(50) NOT NULL UNIQUE
 );
 
+-- Dodavanje nasumičnih korisnika
+INSERT INTO Korisnici (ime, prezime, email) VALUES
+('Ivan', 'Horvat', 'ivan.horvat@email.com'),
+('Ana', 'Kovač', 'ana.kovac@email.com'),
+('Marko', 'Marić', 'marko.marić@email.com'),
+('Jelena', 'Novak', 'jelena.novak@email.com'),
+('Petra', 'Zorić', 'petra.zoric@email.com'),
+('David', 'Kovačić', 'david.kovacic@email.com'),
+('Luka', 'Tomić', 'luka.tomic@email.com'),
+('Sara', 'Jurić', 'sara.juric@email.com'),
+('Toni', 'Babić', 'toni.babic@email.com'),
+('Ivana', 'Brkić', 'ivana.brkic@email.com');
+
 -- Tablica za praćenje gledanja filmova
 CREATE TABLE Gledanje (
     id INT PRIMARY KEY IDENTITY(1,1),
@@ -91,3 +104,58 @@ CREATE TABLE Gledanje (
     FOREIGN KEY (film_id) REFERENCES Filmovi(id),
     FOREIGN KEY (korisnik_id) REFERENCES Korisnici(id)
 );
+
+-- Dodavanje nasumičnih podataka u tablicu Gledanje
+-- Svaki korisnik je odgledao nekoliko filmova na nasumičnim datumima
+INSERT INTO Gledanje (film_id, korisnik_id, datum_gledanja) 
+VALUES
+-- Korisnik 1 (Ivan Horvat) 
+(1, 1, DATEADD(DAY, -50, GETDATE())),  -- Film 1
+(3, 1, DATEADD(DAY, -200, GETDATE())), -- Film 3
+(5, 1, DATEADD(DAY, -100, GETDATE())), -- Film 5
+
+-- Korisnik 2 (Ana Kovač)
+(2, 2, DATEADD(DAY, -30, GETDATE())),  -- Film 2
+(4, 2, DATEADD(DAY, -150, GETDATE())), -- Film 4
+(6, 2, DATEADD(DAY, -75, GETDATE())),  -- Film 6
+
+-- Korisnik 3 (Marko Marić)
+(7, 3, DATEADD(DAY, -200, GETDATE())), -- Film 7
+(8, 3, DATEADD(DAY, -120, GETDATE())), -- Film 8
+(9, 3, DATEADD(DAY, -80, GETDATE())),  -- Film 9
+
+-- Korisnik 4 (Jelena Novak)
+(10, 4, DATEADD(DAY, -10, GETDATE())), -- Film 10
+(2, 4, DATEADD(DAY, -300, GETDATE())), -- Film 2
+(6, 4, DATEADD(DAY, -10, GETDATE())),  -- Film 6
+
+-- Korisnik 5 (Petra Zorić)
+(1, 5, DATEADD(DAY, -10, GETDATE())),  -- Film 1
+(3, 5, DATEADD(DAY, -150, GETDATE())), -- Film 3
+(5, 5, DATEADD(DAY, -250, GETDATE())), -- Film 5
+
+-- Korisnik 6 (David Kovačić)
+(4, 6, DATEADD(DAY, -200, GETDATE())), -- Film 4
+(6, 6, DATEADD(DAY, -20, GETDATE())),  -- Film 6
+(7, 6, DATEADD(DAY, -100, GETDATE())), -- Film 7
+
+-- Korisnik 7 (Luka Tomić)
+(8, 7, DATEADD(DAY, -120, GETDATE())), -- Film 8
+(9, 7, DATEADD(DAY, -50, GETDATE())),  -- Film 9
+(10, 7, DATEADD(DAY, -300, GETDATE())),-- Film 10
+
+-- Korisnik 8 (Sara Jurić)
+(3, 8, DATEADD(DAY, -220, GETDATE())), -- Film 3
+(5, 8, DATEADD(DAY, -80, GETDATE())),  -- Film 5
+(1, 8, DATEADD(DAY, -90, GETDATE())),  -- Film 1
+
+-- Korisnik 9 (Toni Babić)
+(2, 9, DATEADD(DAY, -10, GETDATE())),  -- Film 2
+(4, 9, DATEADD(DAY, -50, GETDATE())),  -- Film 4
+(6, 9, DATEADD(DAY, -20, GETDATE())),  -- Film 6
+
+-- Korisnik 10 (Ivana Brkić)
+(7, 10, DATEADD(DAY, -30, GETDATE())), -- Film 7
+(8, 10, DATEADD(DAY, -70, GETDATE())), -- Film 8
+(10, 10, DATEADD(DAY, -100, GETDATE())) -- Film 10
+;
