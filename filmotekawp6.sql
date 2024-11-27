@@ -39,7 +39,6 @@ CREATE TABLE Filmovi (
 );
 
 -- Dodavanje filmova s odgovarajućim žanrovima
--- Prvo ćemo unijeti filmove, a zatim povezati s odgovarajućim žanrovima
 
 -- Akcija / Triler
 INSERT INTO Filmovi (naziv, opis, datum_izlaska, zanr_id) VALUES
